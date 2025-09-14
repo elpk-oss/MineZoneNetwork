@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Demon Slayer Info 🎴</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Comic Sans MS", sans-serif;
+      background: linear-gradient(135deg, #ff7eb3, #65d6ce, #ffe75e);
+      background-size: 400% 400%;
+      animation: gradient 10s ease infinite;
+      text-align: center;
+      color: #fff;
+    }
+
+    @keyframes gradient {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    h1 {
+      margin: 20px;
+      text-shadow: 2px 2px 5px #00000080;
+    }
+
+    .mensaje {
+      font-size: 1.2rem;
+      margin: 15px auto;
+      max-width: 600px;
+      background: #00000050;
+      padding: 12px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px #00000050;
+    }
+
+    button {
+      margin: 8px;
+      padding: 12px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background: #ffcc00;
+      color: #000;
+      transition: transform 0.2s ease, background 0.3s;
+    }
+    button:hover {
+      transform: scale(1.1);
+      background: #ffee58;
+    }
+
+    #clock {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      background: #00000060;
+      display: inline-block;
+      padding: 8px 15px;
+      border-radius: 8px;
+    }
+
+    @keyframes fall {
+      to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <h1>🎴 Demon Slayer Info 🎴</h1>
+  <div class="mensaje">
+    Demon Slayer (Kimetsu no Yaiba) es un anime y manga sobre Tanjiro Kamado, un joven que lucha contra demonios para proteger a su hermana Nezuko y vengar a su familia. ¡Aprendé curiosidades y datos interesantes sobre este mundo! ⚔️
+  </div>
+
+  <div id="menuArea">
+    <button onclick="datoAnime()">Dato Curioso</button>
+    <button onclick="personaje()">Personaje Aleatorio</button>
+    <button onclick="retoOtaku()">Reto Otaku</button>
+    <button onclick="explicacion()">¿Qué es Demon Slayer?</button>
+    <button onclick="confetti()">Sorpresa 🎊</button>
+
+    <p id="salida"></p>
+    <div id="clock">⌚ Hora actual: --:--:--</div>
+  </div>
+
+  <script>
+    const salida = document.getElementById("salida");
+
+    // ===== FUNCIONES =====
+    const datos = [
+      "Tanjiro utiliza la Respiración del Agua para pelear contra demonios 🌊",
+      "Nezuko no habla pero puede usar su fuerza demoníaca para proteger a otros 💖",
+      "Zenitsu es cobarde, pero cuando duerme se vuelve un maestro del rayo ⚡",
+      "Inosuke creció en las montañas y usa la Respiración de la Bestia 🐗",
+      "El manga de Demon Slayer empezó en 2016 y terminó en 2020 📖",
+      "El anime se hizo famoso por su animación impecable por Ufotable 🎬"
+    ];
+
+    const personajes = [
+      "Tanjiro Kamado: protagonista valiente y bondadoso ⚔️",
+      "Nezuko Kamado: hermana demonio protectora 💖",
+      "Zenitsu Agatsuma: maestro del rayo aunque miedoso ⚡",
+      "Inosuke Hashibira: luchador salvaje con máscara de jabalí 🐗",
+      "Giyu Tomioka: Pilar del Agua, calmado y poderoso 🌊",
+      "Kyojuro Rengoku: Pilar del Fuego, pasión y fuerza 🔥",
+      "Shinobu Kocho: Pilar del Insecto, sigilosa y venenosa 🐝"
+    ];
+
+    const retos = [
+      "Intentá imitar la pose de Tanjiro por 5 segundos ⚔️",
+      "Decí la frase favorita de tu personaje favorito 🎤",
+      "Dibujá a tu personaje favorito en 1 minuto 🎨",
+      "Nombrá todos los Hashira en 30 segundos 😱",
+      "Inventá un movimiento de respiración nuevo 💨"
+    ];
+
+    function datoAnime() {
+      salida.textContent = datos[Math.floor(Math.random() * datos.length)];
+    }
+
+    function personaje() {
+      salida.textContent = personajes[Math.floor(Math.random() * personajes.length)];
+    }
+
+    function retoOtaku() {
+      salida.textContent = retos[Math.floor(Math.random() * retos.length)];
+    }
+
+    function explicacion() {
+      salida.textContent = "Demon Slayer es un anime/manga donde los humanos luchan contra demonios usando espadas y técnicas llamadas 'Respiraciones'. El protagonista es Tanjiro, y la historia combina acción, aventura y emociones profundas.";
+    }
+
+    function confetti() {
+      salida.textContent = "🎉 BOOM! Confetti por todos lados 🎉";
+      for (let i=0; i<30; i++) {
+        let conf = document.createElement("div");
+        conf.textContent = "✨";
+        conf.style.position = "fixed";
+        conf.style.left = Math.random()*100 + "vw";
+        conf.style.top = "-10px";
+        conf.style.fontSize = Math.random()*20 + 10 + "px";
+        conf.style.animation = `fall ${Math.random()*2+2}s linear forwards`;
+        document.body.appendChild(conf);
+        setTimeout(()=>conf.remove(), 4000);
+      }
+    }
+
+    // ===== RELOJ =====
+    function updateClock() {
+      const now = new Date();
+      const h = String(now.getHours()).padStart(2,"0");
+      const m = String(now.getMinutes()).padStart(2,"0");
+      const s = String(now.getSeconds()).padStart(2,"0");
+      document.getElementById("clock").textContent = `⌚ Hora actual: ${h}:${m}:${s}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>
